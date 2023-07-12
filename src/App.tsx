@@ -1,34 +1,76 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import TimerProvider from "./Timer"
+import { Icon_facebook, Icon_instagram, Icon_pinterest } from "./assets/images"
+import TileList from "./components/TileList"
+
+export type Tile = {
+  label: string,
+  check?: (count: number) => boolean,
+  value: (count: number) => number
+}
+
+const tiles: Tile[] = [
+  {
+    label: 'Days',
+    check(count) {
+        return isFinite(count)
+    },
+    value(count){
+      return Math.floor(count / (60 * 60 * 1000 * 24))
+    }
+  },
+  {
+    label: 'Hours',
+    check(count) {
+        return isFinite(count)
+    },
+    value(count){
+      return Math.floor(count / (60 * 60 * 1000)) % 24
+    }
+  },
+  {
+    label: 'Minutes',
+    check(count) {
+        return isFinite(count)
+    },
+    value(count){
+      return Math.floor(count / (60 * 1000)) % 60
+    }
+  },
+  {
+    label: 'Seconds',
+    check(count) {
+        return isFinite(count)
+    },
+    value(count){
+      return Math.floor(count / 1000) % 60
+    }
+  }
+]
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <main>
+      <h1>We're launching soon</h1>
+      <TimerProvider>
+        <TileList tiles={tiles} key={'tile list'}/>
+      </TimerProvider>
+      <footer>
+        <ul className="social-icons">
+          <li>
+            <h2 className="visually-hidden">Facebook</h2>
+            <Icon_facebook className='social-icon'/>
+          </li>
+          <li>
+          <h2 className="visually-hidden">Pinterest</h2>
+            <Icon_pinterest className='social-icon'/>
+          </li>
+          <li>
+          <h2 className="visually-hidden">Instagram</h2>
+            <Icon_instagram className='social-icon'/>
+          </li>
+        </ul>
+      </footer>
+    </main>
   )
 }
 

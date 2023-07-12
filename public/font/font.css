@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'Red Hat Text';
+    font-style: normal;
+    font-weight: 700;
+    src: url(Red+Hat+Text_700_normal.eot); /* {{embedded-opentype-gf-url}} */
+    src: local('☺'),
+        url(Red+Hat+Text_700_normal.eot?#iefix) format('embedded-opentype'), /* {{embedded-opentype-gf-url}} */
+        url(Red+Hat+Text_700_normal.woff2) format('woff2'), /* http://fonts.gstatic.com/s/redhattext/v13/RrQCbohi_ic6B3yVSzGBrMx6ZI_cy1A6Ok2ML193VrM.woff2 */
+        url(Red+Hat+Text_700_normal.woff) format('woff'), /* http://fonts.gstatic.com/s/redhattext/v13/RrQCbohi_ic6B3yVSzGBrMx6ZI_cy1A6Ok2ML193VrU.woff */
+        url(Red+Hat+Text_700_normal.ttf) format('truetype'), /* http://fonts.gstatic.com/s/redhattext/v13/RrQCbohi_ic6B3yVSzGBrMx6ZI_cy1A6Ok2ML193VrbacYVEjIU.ttf */
+        url(Red+Hat+Text_700_normal.svg#Red+Hat+Text_700_normal) format('svg'); /* {{svg-gf-url}} */
+}

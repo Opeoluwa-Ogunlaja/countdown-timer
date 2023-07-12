@@ -1,0 +1,39 @@
+& > div{
+    // --shadow-color: hsla(0,0,0, .3);
+    height: 5rem;
+    flex: 1;
+    width: 100%;
+    border-radius: .25rem;
+    box-shadow: 
+      0 12px 6px -4px hsla(0, 0%, 0%, .3),
+      4px 0 4px -4px hsla(0, 0%, 0%, .3),
+      -4px 0 4px -4px hsla(0, 0%, 0%, .3);
+
+      display: grid;
+      grid-template-areas: 'stack';
+
+      & > *{
+        grid-area: stack;
+      }
+  }
+
+  .panel{
+    width: 100%;
+    contain: paint;
+    border-radius: inherit;
+    display: grid;
+    place-items: center;
+    place-content: center;
+    font-size: 4rem;
+    color: var(--clr-primary-400);
+
+    &:nth-of-type(1){
+      clip-path: inset(0 0 50% 0);
+      background: radial-gradient(circle at top right, black 5px, var(--clr-neutral-600) 0) top right;
+    }
+
+    &:nth-of-type(2){
+      clip-path: inset(50% 0 0 0);
+      background: radial-gradient(circle at bottom right, black 5px, var(--clr-neutral-600) 0) bottom right;
+    }
+  }

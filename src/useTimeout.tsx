@@ -1,8 +1,8 @@
 import { useEffect, useRef, useCallback } from "react"
 
-export const useTimeout = (callback: any, delay: number, autoplay: boolean = true) => {
-    const callbackRef = useRef<any>(callback);
-    const timeOutRef = useRef<any>();
+export const useTimeout = (callback: () => void, delay: number, autoplay = true) => {
+    const callbackRef = useRef<() => void>(callback);
+    const timeOutRef = useRef<number | undefined>();
 
     useEffect(() => {
         callbackRef.current = callback

@@ -1,4 +1,4 @@
-import { FC, ReactNode, useEffect } from "react"
+import { FC, ReactNode } from "react"
 import { Tile as TileProp } from "../App"
 import Tile from "./Tile"
 

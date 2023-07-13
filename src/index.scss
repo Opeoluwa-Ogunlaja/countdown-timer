@@ -221,6 +221,11 @@ footer{
 
     &.bottom{
       transform: rotateX(180deg);
+      position: relative;
+
+      &::before{
+
+      }
 
       .panel{
         transform: rotateY(180deg) rotateZ(180deg);
@@ -279,7 +284,7 @@ footer{
   }
 
   .flipper-vertical.turning{
-    animation: turn 1s infinite;
+    animation: turn .8s .3s infinite;
   }
 
   @keyframes turn {

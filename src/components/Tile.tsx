@@ -25,11 +25,11 @@ const Tile: FC<TileProp> = ({ check = () => { return true }, value, label }) => 
             </div>
             <div className="panel-container dots top">
                 <div className="panel">
-                    {  reFormat(value(count)) }
+                    { reFormat(value(count)) }
                 </div>
             </div>
             <div className="panel-container dots bottom">
-                <div className="panel">
+                <div className="panel" data-previous={previousCount}>
                     { reFormat(value(count)) }
                 </div>
             </div>

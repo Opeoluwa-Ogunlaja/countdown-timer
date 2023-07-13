@@ -204,6 +204,15 @@ footer{
       position: relative;
   }
 
+  .panel{
+    height: var(--panel-height);
+    display: grid;
+    place-items: center;
+    font-size: var(--fs-800);
+    color: var(--clr-primary-400);
+    text-align: center;
+  }
+
   .panel-container{
     overflow: hidden;
     border-top-left-radius: inherit;
@@ -213,6 +222,26 @@ footer{
     --pos3: bottom left;
     --pos4: bottom right;
     --bg-color: var(--clr-neutral-600);
+    position: relative;
+
+    .panel{
+      &::after{
+        all: inherit;
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        content: attr(data-previous);
+        visibility: hidden;
+        animation: blink .3s;
+      }
+
+      @keyframes blink {
+        to{ 
+          visibility: hidden;
+        }
+      }
+    }
 
     &.top{
       transform-origin: bottom;
@@ -221,11 +250,6 @@ footer{
 
     &.bottom{
       transform: rotateX(180deg);
-      position: relative;
-
-      &::before{
-
-      }
 
       .panel{
         transform: rotateY(180deg) rotateZ(180deg);
@@ -233,14 +257,6 @@ footer{
     }
   }
 
-  .panel{
-    height: var(--panel-height);
-    display: grid;
-    place-items: center;
-    font-size: var(--fs-800);
-    color: var(--clr-primary-400);
-    text-align: center;
-  }
 
   .flipper{
     perspective: 400px;
@@ -284,11 +300,11 @@ footer{
   }
 
   .flipper-vertical.turning{
-    animation: turn .8s .3s infinite;
+    animation: flip .8s .2s infinite;
   }
 
-  @keyframes turn {
-    to{
+  @keyframes flip {
+    100%{
       transform: rotateX(-180deg);
     }
   }

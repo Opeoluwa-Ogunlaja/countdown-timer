@@ -23,7 +23,7 @@ const Tile: FC<TileProp> = ({ check = () => { return true }, value, label }) => 
                     </span>
                 </div>
             </div>
-            {/* <div className="panel-container dots top">
+            <div className="panel-container dots top">
                 <div className="panel">
                     { reFormat(value(count)) }
                 </div>
@@ -32,7 +32,7 @@ const Tile: FC<TileProp> = ({ check = () => { return true }, value, label }) => 
                 <div className="panel">
                     { reFormat(value(count)) }
                 </div>
-            </div> */}
+            </div>
         </div>
         <h3>{label}</h3>
     </div>

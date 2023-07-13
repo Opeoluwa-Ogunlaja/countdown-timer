@@ -21,7 +21,7 @@
   --fs-500: 1rem;
   --fs-600: 1.25rem;
   --fs-700: 1.75rem;
-  --fs-800: 3rem;
+  --fs-800: 4.5rem;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -151,16 +151,72 @@ footer{
   display: grid;
   grid-auto-flow: column;
   gap: 2rem;
+
+  @include mobile{
+    gap: .5rem;
+  }
+}
+
+.flipper{
+  perspective: 400px;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  z-index: 1;
+  border-radius: inherit;
+  --pos1: center left;
+  --pos2: center right;
+  --pos3: center left;
+  --pos4: center right;
+  --bg-color: var(--clr-neutral-600);
+}
+
+.flipper-object{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  clip-path: inset(0 0 50% 0);
+
+  .panel{
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    backface-visibility: hidden;
+  }
+}
+
+.flipper-vertical .back{
+  transform: rotateX(180deg);
+}
+
+.flipper:hover{
+  .flipper-vertical{
+    transform: rotateX(-180deg);
+    color: blue;
+  }
 }
 
 .tile{
+  --min-width: 8rem;
+  --tile-height: 5rem;
+  --panel-height: 7rem;
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 8rem;
+  min-width: var(--min-width);
   gap: 1.5rem;
   justify-content: stretch;
   cursor: pointer;
+
+  @include mobile{
+    --min-width: 4rem;
+    --tile-height: 2rem;
+    --panel-height: 5rem;
+    --fs-800: 2.25rem;
+  }
 
   .dots{
     background: 
@@ -175,7 +231,7 @@ footer{
 
   & > div{
     --shadow-color: hsla(0, 0%, 0%, .3);
-    height: 5rem;
+    height: var(--tile-height);
     flex: 1;
     width: 100%;
     border-radius: .25rem;
@@ -185,7 +241,7 @@ footer{
       -8px 0 8px -4px var(--shadow-color);
 
       display: grid;
-      grid-template-rows: 3.5rem 3.5rem;
+      grid-template-rows: calc(var(--panel-height)/2) calc(var(--panel-height)/2);
       position: relative;
   }
 
@@ -214,57 +270,12 @@ footer{
   }
 
   .panel{
-    height: 7rem;
+    height: var(--panel-height);
     display: grid;
     place-items: center;
-    font-size: 4.5rem;
+    font-size: var(--fs-800);
     color: var(--clr-primary-400);
     text-align: center;
-  }
-
-  // .flipper{
-  //   position: absolute;
-  //   width: 100%;
-  //   height: 100%;
-  //   perspective: 400px;
-  //   z-index: 1;
-  //   // opacity: 0;
-  //   border-radius: inherit;
-  //   --pos1: center left;
-  //   --pos2: center right;
-  //   --pos3: center left;
-  //   --pos4: center right;
-  //   --bg-color: var(--clr-neutral-600);
-  // }
-  
-  // .flipper-object{
-  //   position: absolute;
-  //   width: 100%;
-  //   height: 100%;
-  //   transition: transform 1s;
-  //   transform-style: preserve-3d;
-  // }
-
-  .flipper{
-    perspective: 400px;
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-  }
-
-  .flipper-object{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    transition: transform 1s;
-    transform-style: preserve-3d;
-
-    .panel{
-      position: absolute;
-      inset: 0;
-      margin: 0;
-    }
   }
   
 

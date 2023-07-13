@@ -157,47 +157,6 @@ footer{
   }
 }
 
-.flipper{
-  perspective: 400px;
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  z-index: 1;
-  border-radius: inherit;
-  --pos1: center left;
-  --pos2: center right;
-  --pos3: center left;
-  --pos4: center right;
-  --bg-color: var(--clr-neutral-600);
-}
-
-.flipper-object{
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  transition: transform 1s;
-  transform-style: preserve-3d;
-  clip-path: inset(0 0 50% 0);
-
-  .panel{
-    position: absolute;
-    inset: 0;
-    margin: 0;
-    backface-visibility: hidden;
-  }
-}
-
-.flipper-vertical .back{
-  transform: rotateX(180deg);
-}
-
-.flipper:hover{
-  .flipper-vertical{
-    transform: rotateX(-180deg);
-    color: blue;
-  }
-}
-
 .tile{
   --min-width: 8rem;
   --tile-height: 5rem;
@@ -276,6 +235,53 @@ footer{
     font-size: var(--fs-800);
     color: var(--clr-primary-400);
     text-align: center;
+  }
+
+  .flipper{
+    perspective: 400px;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    min-height: 100%;
+    z-index: 1;
+    border-radius: inherit;
+    --pos1: center left;
+    --pos2: center right;
+    --pos3: center left;
+    --pos4: center right;
+    --bg-color: var(--clr-neutral-600);
+  }
+  
+  .flipper-object{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+  
+    .panel{
+      position: absolute;
+      border-radius: inherit;
+      inset: 0;
+      margin: 0;
+      backface-visibility: hidden;
+    }
+  }
+
+  .flipper-vertical .front{
+    clip-path: inset(0 0 50% 0);
+    opacity: 1;
+  }
+  
+  .flipper-vertical .back{
+    transform: rotateX(180deg);
+    clip-path: inset(50% 0 0 0);
+  }
+  
+  .flipper:hover{
+    .flipper-vertical{
+      transform: rotateX(-180deg);
+    }
   }
   
 

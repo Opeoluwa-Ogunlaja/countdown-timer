@@ -14,12 +14,12 @@ const Tile: FC<TileProp> = ({ check = () => { return true }, value, label }) => 
     return <div className="tile">
         <div>
             <div className="flipper">
-                <div className="flipper-object dots flipper-vertical">
-                    <span className="panel front">
+                <div className="flipper-object flipper-vertical">
+                    <span className="panel dots front">
                         { reFormat(value(count)) }
                     </span>
-                    <span className="panel back">
-                        { previousCount && reFormat(value(count)) }
+                    <span className="panel  dots back">
+                        { reFormat(value(count)) }
                     </span>
                 </div>
             </div>

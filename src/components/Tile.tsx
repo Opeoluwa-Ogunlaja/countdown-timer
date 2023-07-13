@@ -10,11 +10,11 @@ const Tile: FC<TileProp> = ({ check = () => { return true }, value, label }) => 
 
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const previousCount = usePrevious(reFormat(value(count)))
-
+    
     return <div className="tile">
         <div>
             <div className="flipper">
-                <div className="flipper-object flipper-vertical">
+                <div className={`flipper-object flipper-vertical${ check(count) ? ' turning' : '' }`}>
                     <span className="panel dots front">
                         { reFormat(value(count)) }
                     </span>
@@ -25,7 +25,7 @@ const Tile: FC<TileProp> = ({ check = () => { return true }, value, label }) => 
             </div>
             <div className="panel-container dots top">
                 <div className="panel">
-                    { reFormat(value(count)) }
+                    {  reFormat(value(count)) }
                 </div>
             </div>
             <div className="panel-container dots bottom">

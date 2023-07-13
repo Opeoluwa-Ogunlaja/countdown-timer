@@ -270,16 +270,20 @@ footer{
 
   .flipper-vertical .front{
     clip-path: inset(0 0 50% 0);
-    opacity: 1;
+    opacity: .6;
   }
   
   .flipper-vertical .back{
     transform: rotateX(180deg);
     clip-path: inset(50% 0 0 0);
   }
-  
-  .flipper:hover{
-    .flipper-vertical{
+
+  .flipper-vertical.turning{
+    animation: turn 1s infinite;
+  }
+
+  @keyframes turn {
+    to{
       transform: rotateX(-180deg);
     }
   }

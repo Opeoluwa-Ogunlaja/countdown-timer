@@ -11,8 +11,8 @@ export type Tile = {
 const tiles: Tile[] = [
   {
     label: 'Days',
-    check(count) {
-        return isFinite(count)
+    check(count) { 
+      return Math.floor(count / (1000)) % (60 * 60 * 24) === 0;
     },
     value(count){
       return Math.floor(count / (60 * 60 * 1000 * 24))
@@ -21,7 +21,7 @@ const tiles: Tile[] = [
   {
     label: 'Hours',
     check(count) {
-        return isFinite(count)
+        return Math.floor(count / (1000)) % (60 * 60) === 0;
     },
     value(count){
       return Math.floor(count / (60 * 60 * 1000)) % 24
@@ -30,7 +30,8 @@ const tiles: Tile[] = [
   {
     label: 'Minutes',
     check(count) {
-        return isFinite(count)
+      
+      return Math.floor(count / (1000)) % 60 === 0;
     },
     value(count){
       return Math.floor(count / (60 * 1000)) % 60

@@ -11,11 +11,11 @@ const Tile: FC<TileProp> = ({ check = () => { return true }, value, label }) => 
 
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const previousCount = usePrevious(reFormat(value(count)));
-    const [bottomCount, setBottomCount] = useState<string>(previousCount || reFormat(value(count)))
+    const [bottomCount, setBottomCount] = useState<string>(reFormat(value(count)))
     
     useTimeout(() => {
         setBottomCount(reFormat(value(count)))
-    }, 400, true)
+    }, 450, true)
 
     
     return <div className="tile">

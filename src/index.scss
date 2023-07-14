@@ -166,10 +166,10 @@ footer{
   cursor: pointer;
 
   @include mobile{
-    --min-width: 4rem;
+    --min-width: 3rem;
     --tile-height: 2rem;
     --panel-height: 5rem;
-    --fs-800: 2.25rem;
+    --fs-800: 3.5rem;
   }
 
   .dots{

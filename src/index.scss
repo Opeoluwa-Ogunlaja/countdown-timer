@@ -23,11 +23,6 @@
   --fs-700: 1.75rem;
   --fs-800: 4.5rem;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
 }
 
 html{
@@ -211,6 +206,7 @@ footer{
     font-size: var(--fs-800);
     color: var(--clr-primary-400);
     text-align: center;
+    will-change: contents !important;
   }
 
   .panel-container{
@@ -223,25 +219,6 @@ footer{
     --pos4: bottom right;
     --bg-color: var(--clr-neutral-600);
     position: relative;
-
-    .panel{
-      &::after{
-        all: inherit;
-        position: absolute;
-        width: 100%;
-        top: 0;
-        left: 0;
-        content: attr(data-previous);
-        visibility: hidden;
-        animation: blink .3s;
-      }
-
-      @keyframes blink {
-        to{ 
-          visibility: hidden;
-        }
-      }
-    }
 
     &.top{
       transform-origin: bottom;
@@ -271,6 +248,11 @@ footer{
     --pos3: center left;
     --pos4: center right;
     --bg-color: var(--clr-neutral-600);
+    visibility: hidden;
+
+    &.turning{
+      visibility: visible;
+    }
   }
   
   .flipper-object{
@@ -279,6 +261,7 @@ footer{
     height: 100%;
     transition: transform 1s;
     transform-style: preserve-3d;
+    will-change: transform;
   
     .panel{
       position: absolute;
@@ -291,7 +274,9 @@ footer{
 
   .flipper-vertical .front{
     clip-path: inset(0 0 50% 0);
-    opacity: .6;
+    opacity: 0;
+    will-change: contents;
+    transition: opacity .7s linear;
   }
   
   .flipper-vertical .back{
@@ -300,7 +285,11 @@ footer{
   }
 
   .flipper-vertical.turning{
-    animation: flip .8s .2s infinite;
+    .front{
+      opacity: 1;
+    }
+
+    animation: flip 1s linear infinite;
   }
 
   @keyframes flip {

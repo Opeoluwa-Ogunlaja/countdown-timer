@@ -1,7 +1,8 @@
 import { Tile as TileProp } from "../App";
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import { useCount } from "../Timer";
 import usePrevious from "../usePrevious";
+import { useTimeout } from "../useTimeout";
 
 const reFormat = (num: number | string): string => Number(num) < 10 ? '0' + num.toString() : num.toString()
 
@@ -9,14 +10,20 @@ const Tile: FC<TileProp> = ({ check = () => { return true }, value, label }) => 
     const count = useCount()
 
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    const previousCount = usePrevious(reFormat(value(count)))
+    const previousCount = usePrevious(reFormat(value(count)));
+    const [bottomCount, setBottomCount] = useState<string>(previousCount || reFormat(value(count)))
+    
+    useTimeout(() => {
+        setBottomCount(reFormat(value(count)))
+    }, 400, true)
+
     
     return <div className="tile">
         <div>
-            <div className="flipper">
+            <div className={`flipper${ check(count) ? ' turning' : '' }`}>
                 <div className={`flipper-object flipper-vertical${ check(count) ? ' turning' : '' }`}>
                     <span className="panel dots front">
-                        { reFormat(value(count)) }
+                        { bottomCount }
                     </span>
                     <span className="panel  dots back">
                         { reFormat(value(count)) }
@@ -29,8 +36,8 @@ const Tile: FC<TileProp> = ({ check = () => { return true }, value, label }) => 
                 </div>
             </div>
             <div className="panel-container dots bottom">
-                <div className="panel" data-previous={previousCount}>
-                    { reFormat(value(count)) }
+                <div className="panel" data-previous={reFormat(value(count))}>
+                    { bottomCount }
                 </div>
             </div>
         </div>

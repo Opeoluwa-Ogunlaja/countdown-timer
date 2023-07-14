@@ -206,7 +206,7 @@ footer{
     font-size: var(--fs-800);
     color: var(--clr-primary-400);
     text-align: center;
-    will-change: contents !important;
+    will-change: contents;
   }
 
   .panel-container{

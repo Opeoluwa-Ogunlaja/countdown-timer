@@ -23,7 +23,7 @@ const Tile: FC<TileProp> = ({ check = () => { return true }, value, label }) => 
             <div className={`flipper${ check(count) ? ' turning' : '' }`}>
                 <div className={`flipper-object flipper-vertical${ check(count) ? ' turning' : '' }`}>
                     <span className="panel dots front">
-                        { bottomCount }
+                        { reFormat(value(count)) }
                     </span>
                     <span className="panel  dots back">
                         { reFormat(value(count)) }

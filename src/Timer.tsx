@@ -1,6 +1,7 @@
 import { ReactNode, createContext, useContext, useState } from 'react'
 import { useUpdateEffect } from './useUpdateEffect'
 import { useTimeout } from './useTimeout'
+import { useInterval } from './useInterval'
 
 type timerProps = {
     children: ReactNode,
@@ -20,11 +21,11 @@ function TimerProvider(props: timerProps){
 
     const reduceState = () => setCount(countValue => countValue > 0 ? countValue - 1000 : 0)
 
-    const [, reset ] = useTimeout(reduceState, 1000, true)
+    console.log(count);
+    
+    const [, clear, reset] = useInterval(reduceState, 1000, true)
 
-    useUpdateEffect(() => {
-        reset()
-    }, [ count ]);
+    useUpdateEffect(clear, [count])
 
     return <CountContext.Provider value={count}>
         { props.children } 

@@ -249,9 +249,12 @@ footer{
     --pos4: center right;
     --bg-color: var(--clr-neutral-600);
     visibility: hidden;
+    opacity: 0;
+    transition: opacity .7s;
 
     &.turning{
       visibility: visible;
+      opacity: 1;
     }
   }
   

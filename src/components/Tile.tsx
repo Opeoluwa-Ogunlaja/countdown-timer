@@ -1,5 +1,5 @@
 import { Tile as TileProp } from "../App";
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import { useCount } from "../Timer";
 import usePrevious from "../usePrevious";
 import { useTimeout } from "../useTimeout";
@@ -11,28 +11,30 @@ const Tile: FC<TileProp> = ({ check = () => { return true }, value, label }) => 
 
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const previousCount = usePrevious(reFormat(value(count)));
-    const [bottomCount, setBottomCount] = useState<string>(reFormat(value(count)))
+    const [bottomCount, setBottomCount] = useState<string>( previousCount ?? reFormat(value(count)) )
+    
+    const formattedValue = reFormat(value(count))
     
     useTimeout(() => {
-        setBottomCount(reFormat(value(count)))
-    }, 450, true)
-
+        setBottomCount(formattedValue)
+    }, 600, true)
+    
     
     return <div className="tile">
         <div>
             <div className={`flipper${ check(count) ? ' turning' : '' }`}>
                 <div className={`flipper-object flipper-vertical${ check(count) ? ' turning' : '' }`}>
-                    <span className="panel dots front">
-                        { reFormat(value(count)) }
+                    <span className="panel dots front" data-previous={previousCount}>
+                        { bottomCount }
                     </span>
-                    <span className="panel  dots back">
-                        { reFormat(value(count)) }
+                    <span className="panel  dots back" data-previous={previousCount}>
+                        { formattedValue }
                     </span>
                 </div>
             </div>
             <div className="panel-container dots top">
                 <div className="panel" data-previous={previousCount}>
-                    { reFormat(value(count)) }
+                    { formattedValue }
                 </div>
             </div>
             <div className="panel-container dots bottom">

@@ -20,10 +20,8 @@ function TimerProvider(props: timerProps){
     const [ count, setCount ] = useState<number>(Ddate - now)
 
     const reduceState = () => setCount(countValue => countValue > 0 ? countValue - 1000 : 0)
-
-    console.log(count);
     
-    const [, clear, reset] = useInterval(reduceState, 1000, true)
+    const [, clear] = useInterval(reduceState, 1000, true)
 
     useUpdateEffect(clear, [count])
 

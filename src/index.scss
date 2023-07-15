@@ -20,8 +20,8 @@
   --fs-400: .875rem;
   --fs-500: 1rem;
   --fs-600: 1.25rem;
-  --fs-700: 1.75rem;
-  --fs-800: 4.5rem;
+  --fs-700: 1.5rem;
+  --fs-800: 5rem;
 
 }
 
@@ -92,10 +92,11 @@ main{
   place-items: center;
   flex-direction: column;
   padding-top: 10rem;
-  gap: 6rem;
+  gap: 4rem;
 
   @include big{
     padding-top: 8rem;
+    gap: 6rem;
   }
 }
 
@@ -107,7 +108,6 @@ main > h1{
 
   @include big{
     font-size: var(--fs-700);
-    letter-spacing: .22em;
   }
 }
 
@@ -144,32 +144,33 @@ footer{
 
 .tile-grid{
   display: grid;
-  grid-auto-flow: column;
   gap: 2rem;
+  grid-template-columns: repeat(4, 1fr);
 
   @include mobile{
-    gap: .5rem;
+    gap: 3vw;
   }
 }
 
 .tile{
-  --min-width: 8rem;
-  --tile-height: 5rem;
-  --panel-height: 7rem;
+  --min-width: 10rem;
+  --tile-height: 7rem;
+  --panel-height: 9rem;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   min-width: var(--min-width);
+  width: var(--min-width);
   gap: 1.5rem;
   justify-content: stretch;
   cursor: pointer;
 
   @include mobile{
-    --min-width: 3rem;
+    --min-width: 5.25rem;
     --tile-height: 2rem;
     --panel-height: 5rem;
-    --fs-800: 3.5rem;
+    --fs-800: 2.75rem;
   }
 
   .dots{
@@ -184,13 +185,13 @@ footer{
   }
 
   & > div{
-    --shadow-color: hsla(0, 0%, 0%, .3);
+    --shadow-color: hsla(0, 0%, 0%, .2);
     height: var(--tile-height);
     flex: 1;
     width: 100%;
     border-radius: .25rem;
     box-shadow: 
-      0 12px 6px -4px var(--shadow-color),
+      0 12px 4px -2px var(--shadow-color),
       8px 0 8px -4px var(--shadow-color),
       -8px 0 8px -4px var(--shadow-color);
 
@@ -251,6 +252,7 @@ footer{
     visibility: hidden;
     opacity: 0;
     transition: opacity .7s;
+    pointer-events: none;
 
     &.turning{
       visibility: visible;
@@ -308,6 +310,10 @@ footer{
     letter-spacing: .5em;
     font-size: var(--fs-300);
     grid-row: fit-content;
+
+    @include mobile{
+      font-size: var(--fs-200);
+    }
   }
 }
 

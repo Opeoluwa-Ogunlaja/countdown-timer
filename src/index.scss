@@ -153,21 +153,22 @@ footer{
 }
 
 .tile{
-  --min-width: 10rem;
+  --width: 10rem;
   --tile-height: 7rem;
   --panel-height: 9rem;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: var(--min-width);
-  width: var(--min-width);
+  min-width: var(--width);
+  width: var(--width);
   gap: 1.5rem;
   justify-content: stretch;
   cursor: pointer;
 
   @include mobile{
-    --min-width: 5.25rem;
+    --width: calc(100vw / 6);
+    min-width: 5rem;
     --tile-height: 2rem;
     --panel-height: 5rem;
     --fs-800: 2.75rem;
@@ -249,13 +250,11 @@ footer{
     --pos3: center left;
     --pos4: center right;
     --bg-color: var(--clr-neutral-600);
-    visibility: hidden;
     opacity: 0;
     transition: opacity .7s;
     pointer-events: none;
 
     &.turning{
-      visibility: visible;
       opacity: 1;
     }
   }

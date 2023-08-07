@@ -15,7 +15,7 @@ export const useCount = () =>  useContext(CountContext)
 const now: number = new Date().getTime()
 
 function TimerProvider(props: timerProps){
-    const Ddate: number = props.to?.getTime() || new Date("06 Aug, 2023").getTime();
+    const Ddate: number = props.to?.getTime() || new Date("19 Aug, 2023").getTime();
 
     const [ count, setCount ] = useState<number>(Ddate - now)
 
